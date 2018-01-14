@@ -13,8 +13,8 @@ The University of Texas at Dallas
 #include <SoftwareSerial.h>
 
 // initialize the stepper library
-Stepper myVerticalStepper(STEPS_PER_ROTATION, VERTICAL_DIRECTION_PIN, VERTICAL_PULSE_PIN);
-Stepper myHorizontalStepper(STEPS_PER_ROTATION, HORIZONTAL_DIRECTION_PIN, HORIZONTAL_PULSE_PIN);
+Stepper myVerticalStepper(PULSE_PER_REVOLUTION, VERTICAL_DIRECTION_PIN, VERTICAL_PULSE_PIN);
+Stepper myHorizontalStepper(PULSE_PER_REVOLUTION, HORIZONTAL_DIRECTION_PIN, HORIZONTAL_PULSE_PIN);
 
 SoftwareSerial serialMatlab(SOFTWARE_SERIAL_RX_PIN, SOFTWARE_SERIAL_TX_PIN); // RX, TX
 
@@ -22,11 +22,12 @@ Agenda scheduler;
 
 String matlabCommand = "";
 String stepData = "";
+String rpmData = "";
 
 // the setup function runs once when you press reset or power the board
 void setup() {
-	myVerticalStepper.setSpeed(ROTATION_PER_MINUTE*4);
-	myHorizontalStepper.setSpeed(ROTATION_PER_MINUTE*4);
+	myVerticalStepper.setSpeed(revolutionPerMinute*4);
+	myHorizontalStepper.setSpeed(revolutionPerMinute*4);
 
 	// initialize the serial ports:
 	Serial.begin(SERIAL_MONITOR_SPEED);
@@ -49,6 +50,19 @@ void task_matlab()
 	while (serialMatlab.available() > 0)
 	{
 		matlabCommand = serialMatlab.readStringUntil('\n');
+
+		if (matlabCommand.charAt(0) == 'S') {
+
+			rpmData = matlabCommand.substring(1);
+			revolutionPerMinute = rpmData.toInt();
+
+			myVerticalStepper.setSpeed(revolutionPerMinute * 4);
+			myHorizontalStepper.setSpeed(revolutionPerMinute * 4);
+
+			Serial.print("Revolution Per Minute is Set as: ");
+			Serial.println(revolutionPerMinute);
+
+		}
 
 		if (matlabCommand.charAt(0) == 'V') {
 
