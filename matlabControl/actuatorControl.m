@@ -1,7 +1,7 @@
 %%% First lis the connections
 % seriallist
 
-sPort = serial('COM4','BaudRate',115200);
+sPort = serial('COM5','BaudRate',115200);
 fopen(sPort);
 
 %%% Command
@@ -9,17 +9,17 @@ fopen(sPort);
 % H for horizontal actuator
 % The number of steps
 
-pulsePerRevolution = 12800;
+pulsePerRevolution = 3200;
 
 % Test for One Revolution
-fprintf(sPort,'V12800');
+fprintf(sPort,'V3200');
 
 % revolutionPerMinute = 60;
 
 distancePerRevolution = 5; % mm
 
 desiredMovementH = 5; % mm
-desiredMovementV = -1;
+desiredMovementV = 1.1;
 
 nPulseH = round(desiredMovementH / distancePerRevolution * pulsePerRevolution);
 nPulseV = round(desiredMovementV / distancePerRevolution * pulsePerRevolution);
