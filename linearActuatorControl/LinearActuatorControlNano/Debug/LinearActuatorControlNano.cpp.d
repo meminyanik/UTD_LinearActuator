@@ -1,0 +1,21 @@
+C:\Users\memin\AppData\Local\Temp\VMBuilds\LinearActuatorControlNano\nano_atmega328\Debug\LinearActuatorControlNano.cpp.o: \
+ C:\Users\memin\AppData\Local\Temp\VMBuilds\LinearActuatorControlNano\nano_atmega328\Debug\LinearActuatorControlNano.cpp \
+ C:\Users\memin\Desktop\D\Arduino\hardware\arduino\avr\cores\arduino/arduino.h \
+ C:\Users\memin\Desktop\D\Arduino\hardware\arduino\avr\cores\arduino/binary.h \
+ C:\Users\memin\Desktop\D\Arduino\hardware\arduino\avr\cores\arduino/WCharacter.h \
+ C:\Users\memin\Desktop\D\Arduino\hardware\arduino\avr\cores\arduino/WString.h \
+ C:\Users\memin\Desktop\D\Arduino\hardware\arduino\avr\cores\arduino/HardwareSerial.h \
+ C:\Users\memin\Desktop\D\Arduino\hardware\arduino\avr\cores\arduino/Stream.h \
+ C:\Users\memin\Desktop\D\Arduino\hardware\arduino\avr\cores\arduino/Print.h \
+ C:\Users\memin\Desktop\D\Arduino\hardware\arduino\avr\cores\arduino/Printable.h \
+ C:\Users\memin\Desktop\D\Arduino\hardware\arduino\avr\cores\arduino/USBAPI.h \
+ C:\Users\memin\Desktop\D\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
+ C:\Users\memin\Desktop\D\Arduino\hardware\arduino\avr\variants\eightanaloginputs/pins_arduino.h \
+ C:\Users\memin\Desktop\D\Arduino\hardware\arduino\avr\variants\eightanaloginputs/../standard/pins_arduino.h \
+ C:\Users\memin\Desktop\D\Arduino\libraries\Stepper\src/Stepper.h \
+ C:\Users\memin\AppData\Local\Temp\VMBuilds\LinearActuatorControlNano\nano_atmega328\Debug\ConfigNano.h \
+ C:\Users\memin\AppData\Local\Temp\VMBuilds\LinearActuatorControlNano\nano_atmega328\Debug\Local_Agenda.h \
+ C:\Users\memin\Desktop\D\Arduino\hardware\arduino\avr\cores\arduino/Arduino.h \
+ C:\Users\memin\Desktop\D\Arduino\hardware\arduino\avr\libraries\SoftwareSerial\src/SoftwareSerial.h \
+ C:\Users\memin\Desktop\D\Arduino\hardware\arduino\avr\cores\arduino/Stream.h \
+ C:\Program\ Files\ (x86)\Microsoft\ Visual\ Studio\2017\Community\Common7\IDE\Extensions\02oghilb.30b\Micro\ Platforms\default\debuggers\VM_DBG/VM_DBG.h
