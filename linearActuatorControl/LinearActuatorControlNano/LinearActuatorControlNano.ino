@@ -63,8 +63,7 @@ void task_matlab()
 			Serial.println(revolutionPerMinute);
 
 		}
-
-		if (matlabCommand.charAt(0) == 'V') {
+		else if (matlabCommand.charAt(0) == 'V') {
 
 			isVerticalCommand = true;
 
