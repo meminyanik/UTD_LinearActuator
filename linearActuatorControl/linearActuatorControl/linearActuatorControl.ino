@@ -184,7 +184,7 @@ void task_stepper_horizontal(void *parameter)
 			tStamp = micros() - tStamp;
 
 			Serial.print("Number of Horizontal Steps: ");
-			Serial.println(abs(horizontalActuatorStep));
+			Serial.println(horizontalActuatorStep);
 			Serial.print("Horizontal Time: ");
 			Serial.println(tStamp);
 
@@ -220,7 +220,7 @@ void task_stepper_vertical(void *parameter)
 			tStamp = micros() - tStamp;
 
 			Serial.print("Number of Vertical Steps: ");
-			Serial.println(abs(verticalActuatorStep));
+			Serial.println(verticalActuatorStep);
 			Serial.print("Vertical Time: ");
 			Serial.println(tStamp);
 

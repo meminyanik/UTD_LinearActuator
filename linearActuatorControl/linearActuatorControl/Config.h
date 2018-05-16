@@ -28,13 +28,13 @@ The University of Texas at Dallas
 #define		SERIAL_MATLAB_SPEED				115200
 
 // set the speed at 60 rpm:
-unsigned int	revolutionPerMinute = 60; // Values are between 0-65535.
+unsigned int	revolutionPerMinute = 120;
 
-bool		isVerticalCommand = false;
-unsigned int	verticalActuatorStep; // Max step is 51200
+bool	isVerticalCommand = false;
+int	verticalActuatorStep;
 
-bool		isHorizontalCommand = false;
-unsigned int	horizontalActuatorStep; // Max step is 51200
+bool	isHorizontalCommand = false;
+int	horizontalActuatorStep;
 
-bool		isContinousCommand = false;
+bool	isContinousCommand = false;
 unsigned int	verticalMeasurement;

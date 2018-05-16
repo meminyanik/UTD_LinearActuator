@@ -1,18 +1,22 @@
 /*
-* Local_Stepper.h - LocalStepper library for ESP32 & Phase stepper Motor Driver ST-M5045
+* Local_Stepper.h - LocalStepper library for ESP32 & Stepper Motor Driver ST-M5045
+*
+* Original library        (0.1)   by Muhammet Emin Yanik.
+*
+* Drives a NEMA 23 Stepper Motor via Stepper Motor Driver ST-M5045.
+*
 */
 
-#include "Arduino.h"
+#include <Arduino.h>
 #include "Local_Stepper.h"
 
 /*
  * two-wire constructor.
  * Sets which wires should control the motor.
  */
-LocalStepper::LocalStepper(int number_of_steps, int motor_dir_pin, int motor_pulse_pin)
+LocalStepper::LocalStepper(unsigned int number_of_steps, int motor_dir_pin, int motor_pulse_pin)
 {
   this->direction = 0;      // motor direction
-  this->last_step_time = 0; // time stamp in us of the last step taken
   this->number_of_steps = number_of_steps; // total number of steps for this motor
 
   // Arduino pins for the motor control connection:
@@ -28,9 +32,9 @@ LocalStepper::LocalStepper(int number_of_steps, int motor_dir_pin, int motor_pul
 /*
  * Sets the speed in revs per minute
  */
-void LocalStepper::setSpeed(long whatSpeed)
+void LocalStepper::setSpeed(unsigned int speed_rpm)
 {
-  this->step_delay = 60L * 1000L * 1000L / this->number_of_steps / whatSpeed;
+  this->step_delay = 60 * 1000 * 1000 / this->number_of_steps / speed_rpm;
 }
 
 /*
@@ -50,21 +54,13 @@ void LocalStepper::step(int steps_to_move)
 
   // decrement the number of steps, moving one step each time:
   while (steps_left > 0)
-  {
-    //unsigned long now = micros();
-    // move only if the appropriate delay has passed:
-    //if (now - this->last_step_time >= this->step_delay)
-    //{
-      // get the timeStamp of when you stepped:
-     // this->last_step_time = now;
-      
+  {   
 	  // step the motor,
 	  stepMotor();
       
 	  // decrement the steps left:
       steps_left--;
 	  
-    //}
   }
 }
 
@@ -73,10 +69,12 @@ void LocalStepper::step(int steps_to_move)
  */
 void LocalStepper::stepMotor()
 {
+	pos_pulse_delay = this->step_delay / 2;
+
 	digitalWrite(motor_pulse_pin, HIGH);
-	delayMicroseconds(this->step_delay / 2);
+	delayMicroseconds(pos_pulse_delay - 1); // -1 is added based on measurements, can be tuned better
 	digitalWrite(motor_pulse_pin, LOW);
-	delayMicroseconds(this->step_delay / 2);
+	delayMicroseconds(this->step_delay - pos_pulse_delay - 1); // -1 is added based on measurements, can be tuned better
 }
 
 /*

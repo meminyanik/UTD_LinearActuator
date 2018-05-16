@@ -1,5 +1,10 @@
 /*
- * Local_Stepper.h - LocalStepper library for ESP32 & Phase stepper Motor Driver ST-M5045
+ * Local_Stepper.h - LocalStepper library for ESP32 & Stepper Motor Driver ST-M5045
+ *
+ * Original library        (0.1)   by Muhammet Emin Yanik.
+ *
+ * Drives a NEMA 23 Stepper Motor via Stepper Motor Driver ST-M5045.
+ *
  */
 
 // ensure this library description is only included once
@@ -9,29 +14,29 @@
 // library interface description
 class LocalStepper {
   public:
-    // constructors:
-    LocalStepper(int number_of_steps, int motor_dir_pin, int motor_pulse_pin);
+    // constructor:
+    LocalStepper(unsigned int number_of_steps, int motor_dir_pin, int motor_pulse_pin);
 
     // speed setter method:
-    void setSpeed(long whatSpeed);
+    void setSpeed(unsigned int speed_rpm);
 
     // mover method:
-    void step(int number_of_steps);
+    void step(int steps_to_move);
 
     int version(void);
 
   private:
-    void stepMotor();		// One Step
+    void stepMotor();				// One step command to the motor
 
-    int direction;            // Direction of rotation
-    unsigned long step_delay; // delay between steps, in us, based on speed
-    int number_of_steps;      // total number of steps this motor can take
+    int direction;					// Direction of rotation
+    unsigned long step_delay;		// Delay between steps, in us, based on speed
+	unsigned long pos_pulse_delay;	// Duration of positive pulse
+    unsigned int number_of_steps;	// Total number of steps this motor can take
 
     // motor pin numbers:
     int motor_dir_pin;
     int motor_pulse_pin;
 
-    unsigned long last_step_time; // time stamp in us of when the last step was taken
 };
 
 #endif
