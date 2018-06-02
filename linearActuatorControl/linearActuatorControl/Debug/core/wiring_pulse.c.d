@@ -54,11 +54,15 @@ C:\Users\memin\AppData\Local\Temp\VMBuilds\linearActuatorControl\espressif_esp32
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/xtensa/config/specreg.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/xtensa/xtruntime-core-state.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_crosscore_int.h \
- D:\Arduino\hardware\espressif\esp32/tools/sdk/include/freertos/freertos/portbenchmark.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_timer.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_err.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/heap/esp_heap_caps.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/heap/multi_heap.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/soc/soc/soc_memory_layout.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_attr.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/freertos/freertos/portbenchmark.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/freertos/freertos/mpu_wrappers.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_system.h \
- D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_err.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_sleep.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/driver/driver/gpio.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_types.h \
@@ -83,6 +87,8 @@ C:\Users\memin\AppData\Local\Temp\VMBuilds\linearActuatorControl\espressif_esp32
  D:\Arduino\hardware\espressif\esp32\cores\esp32\esp32-hal.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/newlib/math.h \
  D:\Arduino\hardware\espressif\esp32\cores\esp32\esp32-hal-log.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/log/esp_log.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/log/esp_log_internal.h \
  D:\Arduino\hardware\espressif\esp32\cores\esp32\esp32-hal-matrix.h \
  D:\Arduino\hardware\espressif\esp32\cores\esp32\esp32-hal-uart.h \
  D:\Arduino\hardware\espressif\esp32\cores\esp32\esp32-hal-gpio.h \
@@ -95,6 +101,7 @@ C:\Users\memin\AppData\Local\Temp\VMBuilds\linearActuatorControl\espressif_esp32
  D:\Arduino\hardware\espressif\esp32\cores\esp32\esp32-hal-sigmadelta.h \
  D:\Arduino\hardware\espressif\esp32\cores\esp32\esp32-hal-timer.h \
  D:\Arduino\hardware\espressif\esp32\cores\esp32\esp32-hal-bt.h \
+ D:\Arduino\hardware\espressif\esp32\cores\esp32\esp8266-compat.h \
  D:\Arduino\hardware\espressif\esp32\cores\esp32\stdlib_noniso.h \
  D:\Arduino\hardware\espressif\esp32\cores\esp32\binary.h \
  D:\Arduino\hardware\espressif\esp32\variants\esp32thing/pins_arduino.h

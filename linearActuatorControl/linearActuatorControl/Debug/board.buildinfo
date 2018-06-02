@@ -12,7 +12,7 @@ build.board=ESP32_THING
 build.f_cpu=240000000L
 build.flash_mode=dio
 build.flash_size=4MB
-build.boot=bootloader
+build.boot=dio
 build.partitions=default
 menu.FlashFreq.80=80MHz
 menu.FlashFreq.80.build.flash_freq=80m
@@ -58,9 +58,10 @@ exceptions.serial.resolve.stack_addresses.pattern="{compiler.path}{addr2line.cmd
 tools.wwwfiles.cmd=ESP32FSUpload.exe
 version=0.0.1
 runtime.tools.xtensa-esp32-elf-gcc.path={runtime.platform.path}/tools/xtensa-esp32-elf
-tools.esptool.cmd="{runtime.platform.path}/tools/esptool.exe"
-tools.esptool.cmd.linux=python "{runtime.platform.path}/tools/esptool.py"
-tools.esptool.cmd.windows="{runtime.platform.path}/tools/esptool.exe"
+tools.esptool.path={runtime.platform.path}/tools
+tools.esptool.cmd=esptool.exe
+tools.esptool.cmd.linux=esptool.py
+tools.esptool.cmd.windows=esptool.exe
 tools.esptool.network_cmd="{runtime.platform.path}/tools/espota.exe"
 tools.esptool.network_cmd.windows="{runtime.platform.path}/tools/espota.exe"
 tools.gen_esp32part.cmd="{runtime.platform.path}/tools/gen_esp32part.exe"
@@ -72,16 +73,16 @@ compiler.warning_flags.more=-Wall -Werror=all
 compiler.warning_flags.all=-Wall -Werror=all -Wextra
 compiler.path={runtime.tools.xtensa-esp32-elf-gcc.path}/bin/
 compiler.sdk.path={runtime.platform.path}/tools/sdk
-compiler.cpreprocessor.flags=-DESP_PLATFORM -DMBEDTLS_CONFIG_FILE="mbedtls/esp_config.h" -DHAVE_CONFIG_H "-I{compiler.sdk.path}/include/config" "-I{compiler.sdk.path}/include/bluedroid" "-I{compiler.sdk.path}/include/app_trace" "-I{compiler.sdk.path}/include/app_update" "-I{compiler.sdk.path}/include/bootloader_support" "-I{compiler.sdk.path}/include/bt" "-I{compiler.sdk.path}/include/driver" "-I{compiler.sdk.path}/include/esp32" "-I{compiler.sdk.path}/include/esp_adc_cal" "-I{compiler.sdk.path}/include/ethernet" "-I{compiler.sdk.path}/include/fatfs" "-I{compiler.sdk.path}/include/freertos" "-I{compiler.sdk.path}/include/heap" "-I{compiler.sdk.path}/include/jsmn" "-I{compiler.sdk.path}/include/log" "-I{compiler.sdk.path}/include/mdns" "-I{compiler.sdk.path}/include/mbedtls" "-I{compiler.sdk.path}/include/mbedtls_port" "-I{compiler.sdk.path}/include/newlib" "-I{compiler.sdk.path}/include/nvs_flash" "-I{compiler.sdk.path}/include/openssl" "-I{compiler.sdk.path}/include/soc" "-I{compiler.sdk.path}/include/spi_flash" "-I{compiler.sdk.path}/include/sdmmc" "-I{compiler.sdk.path}/include/spiffs" "-I{compiler.sdk.path}/include/tcpip_adapter" "-I{compiler.sdk.path}/include/ulp" "-I{compiler.sdk.path}/include/vfs" "-I{compiler.sdk.path}/include/wear_levelling" "-I{compiler.sdk.path}/include/xtensa-debug-module" "-I{compiler.sdk.path}/include/console" "-I{compiler.sdk.path}/include/newlib" "-I{compiler.sdk.path}/include/coap" "-I{compiler.sdk.path}/include/wpa_supplicant" "-I{compiler.sdk.path}/include/expat" "-I{compiler.sdk.path}/include/json" "-I{compiler.sdk.path}/include/nghttp" "-I{compiler.sdk.path}/include/lwip"
+compiler.cpreprocessor.flags=-DESP_PLATFORM -DMBEDTLS_CONFIG_FILE="mbedtls/esp_config.h" -DHAVE_CONFIG_H "-I{compiler.sdk.path}/include/config" "-I{compiler.sdk.path}/include/bluedroid" "-I{compiler.sdk.path}/include/app_trace" "-I{compiler.sdk.path}/include/app_update" "-I{compiler.sdk.path}/include/bootloader_support" "-I{compiler.sdk.path}/include/bt" "-I{compiler.sdk.path}/include/driver" "-I{compiler.sdk.path}/include/esp32" "-I{compiler.sdk.path}/include/esp_adc_cal" "-I{compiler.sdk.path}/include/ethernet" "-I{compiler.sdk.path}/include/fatfs" "-I{compiler.sdk.path}/include/freertos" "-I{compiler.sdk.path}/include/heap" "-I{compiler.sdk.path}/include/jsmn" "-I{compiler.sdk.path}/include/log" "-I{compiler.sdk.path}/include/mdns" "-I{compiler.sdk.path}/include/mbedtls" "-I{compiler.sdk.path}/include/mbedtls_port" "-I{compiler.sdk.path}/include/newlib" "-I{compiler.sdk.path}/include/nvs_flash" "-I{compiler.sdk.path}/include/openssl" "-I{compiler.sdk.path}/include/spi_flash" "-I{compiler.sdk.path}/include/sdmmc" "-I{compiler.sdk.path}/include/spiffs" "-I{compiler.sdk.path}/include/tcpip_adapter" "-I{compiler.sdk.path}/include/ulp" "-I{compiler.sdk.path}/include/vfs" "-I{compiler.sdk.path}/include/wear_levelling" "-I{compiler.sdk.path}/include/xtensa-debug-module" "-I{compiler.sdk.path}/include/coap" "-I{compiler.sdk.path}/include/console" "-I{compiler.sdk.path}/include/expat" "-I{compiler.sdk.path}/include/json" "-I{compiler.sdk.path}/include/lwip" "-I{compiler.sdk.path}/include/newlib" "-I{compiler.sdk.path}/include/nghttp" "-I{compiler.sdk.path}/include/soc" "-I{compiler.sdk.path}/include/wpa_supplicant"
 compiler.c.cmd=xtensa-esp32-elf-gcc
-compiler.c.flags=-std=gnu99 -Os -g3 -ffunction-sections -fdata-sections -fstrict-volatile-bitfields -mlongcalls -nostdlib -Wpointer-arith {compiler.warning_flags} -Wno-error=unused-function -Wno-error=unused-but-set-variable -Wno-error=unused-variable -Wno-error=deprecated-declarations -Wno-unused-parameter -Wno-sign-compare -Wno-old-style-declaration -MMD -c
+compiler.c.flags=-std=gnu99 -Os -g3 -fstack-protector -ffunction-sections -fdata-sections -fstrict-volatile-bitfields -mlongcalls -nostdlib -Wpointer-arith {compiler.warning_flags} -Wno-error=unused-function -Wno-error=unused-but-set-variable -Wno-error=unused-variable -Wno-error=deprecated-declarations -Wno-unused-parameter -Wno-sign-compare -Wno-old-style-declaration -MMD -c
 compiler.cpp.cmd=xtensa-esp32-elf-g++
-compiler.cpp.flags=-std=gnu++11 -fno-exceptions -fno-rtti -Os -g3 -Wpointer-arith -ffunction-sections -fdata-sections -fstrict-volatile-bitfields -mlongcalls -nostdlib {compiler.warning_flags} -Wno-error=unused-function -Wno-error=unused-but-set-variable -Wno-error=unused-variable -Wno-error=deprecated-declarations -Wno-unused-parameter -Wno-sign-compare -fno-rtti -MMD -c
+compiler.cpp.flags=-std=gnu++11 -fno-exceptions -Os -g3 -Wpointer-arith -fexceptions -fstack-protector -ffunction-sections -fdata-sections -fstrict-volatile-bitfields -mlongcalls -nostdlib {compiler.warning_flags} -Wno-error=unused-function -Wno-error=unused-but-set-variable -Wno-error=unused-variable -Wno-error=deprecated-declarations -Wno-unused-parameter -Wno-sign-compare -fno-rtti -MMD -c
 compiler.S.cmd=xtensa-esp32-elf-gcc
 compiler.S.flags=-c -g3 -x assembler-with-cpp -MMD -mlongcalls
 compiler.c.elf.cmd=xtensa-esp32-elf-gcc
-compiler.c.elf.flags=-nostdlib "-L{compiler.sdk.path}/lib" "-L{compiler.sdk.path}/ld" -T esp32_out.ld -T esp32.common.ld -T esp32.rom.ld -T esp32.peripherals.ld -T esp32.rom.spiram_incompatible_fns.ld -u ld_include_panic_highint_hdl -u call_user_start_cpu0 -Wl,--gc-sections -Wl,-static -Wl,--undefined=uxTopUsedPriority  -u __cxa_guard_dummy
-compiler.c.elf.libs=-lgcc -lcxx -lstdc++ -lapp_trace -lapp_update -lbootloader_support -lbt -lbtdm_app -lc -lc_nano -lcoap -lcoexist -lconsole -lcore -ldriver -lesp32 -lesp_adc_cal -lespnow -lethernet -lexpat -lfatfs -lfreertos -lhal -lheap -ljsmn -ljson -llog -llwip -lm -lmbedtls -lmdns -lmicro-ecc -lnet80211 -lnewlib -lnghttp -lnvs_flash -lopenssl -lphy -lpp -lpthread -lrtc -lsdmmc -lsmartconfig -lsoc -lspi_flash -lspiffs -ltcpip_adapter -lulp -lvfs -lwear_levelling -lwpa -lwpa2 -lwpa_supplicant -lwps -lxtensa-debug-module
+compiler.c.elf.flags=-nostdlib "-L{compiler.sdk.path}/lib" "-L{compiler.sdk.path}/ld" -T esp32_out.ld -T esp32.common.ld -T esp32.rom.ld -T esp32.peripherals.ld -T esp32.rom.spiram_incompatible_fns.ld -u ld_include_panic_highint_hdl -u call_user_start_cpu0 -Wl,--gc-sections -Wl,-static -Wl,--undefined=uxTopUsedPriority  -u __cxa_guard_dummy -u __cxx_fatal_exception
+compiler.c.elf.libs=-lgcc -lopenssl -lbtdm_app -lfatfs -lwps -lcoexist -lwear_levelling -lhal -lnewlib -ldriver -lbootloader_support -lpp -lmesh -lsmartconfig -ljsmn -lwpa -lethernet -lphy -lapp_trace -lconsole -lulp -lwpa_supplicant -lfreertos -lbt -lmicro-ecc -lcxx -lxtensa-debug-module -lmdns -lvfs -lsoc -lcore -lsdmmc -lcoap -ltcpip_adapter -lc_nano -lrtc -lspi_flash -lwpa2 -lesp32 -lapp_update -lnghttp -lspiffs -lespnow -lnvs_flash -lesp_adc_cal -llog -lexpat -lm -lc -lheap -lmbedtls -llwip -lnet80211 -lpthread -ljson  -lstdc++
 compiler.as.cmd=xtensa-esp32-elf-as
 compiler.ar.cmd=xtensa-esp32-elf-ar
 compiler.ar.flags=cru
@@ -95,13 +96,14 @@ compiler.cpp.extra_flags=
 compiler.ar.extra_flags=
 compiler.objcopy.eep.extra_flags=
 compiler.elf2hex.extra_flags=
-recipe.c.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.cpreprocessor.flags} {compiler.c.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.c.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
-recipe.cpp.o.pattern="{compiler.path}{compiler.cpp.cmd}" {compiler.cpreprocessor.flags} {compiler.cpp.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.cpp.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
-recipe.S.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.cpreprocessor.flags} {compiler.S.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.S.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
+recipe.c.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.cpreprocessor.flags} {compiler.c.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} -DARDUINO_BOARD="{build.board}" -DARDUINO_VARIANT="{build.variant}" {compiler.c.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
+recipe.cpp.o.pattern="{compiler.path}{compiler.cpp.cmd}" {compiler.cpreprocessor.flags} {compiler.cpp.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} -DARDUINO_BOARD="{build.board}" -DARDUINO_VARIANT="{build.variant}" {compiler.cpp.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
+recipe.S.o.pattern="{compiler.path}{compiler.c.cmd}" {compiler.cpreprocessor.flags} {compiler.S.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} -DARDUINO_BOARD="{build.board}" -DARDUINO_VARIANT="{build.variant}" {compiler.S.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{object_file}"
 recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} {compiler.ar.extra_flags} "{archive_file_path}" "{object_file}"
 recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" {compiler.c.elf.flags} {compiler.c.elf.extra_flags} -Wl,--start-group {object_files} "{build.path}/{archive_file}" {compiler.c.elf.libs} -Wl,--end-group -Wl,-EL -o "{build.path}/{build.project_name}.elf"
 recipe.objcopy.eep.pattern={tools.gen_esp32part.cmd} -q "{runtime.platform.path}/tools/partitions/{build.partitions}.csv" "{build.path}/{build.project_name}.partitions.bin"
-recipe.objcopy.hex.pattern={tools.esptool.cmd} --chip esp32 elf2image --flash_mode "{build.flash_mode}" --flash_freq "{build.flash_freq}" --flash_size "{build.flash_size}" -o "{build.path}/{build.project_name}.bin" "{build.path}/{build.project_name}.elf"
+recipe.objcopy.hex.pattern="{tools.esptool.path}/{tools.esptool.cmd}" --chip esp32 elf2image --flash_mode "{build.flash_mode}" --flash_freq "{build.flash_freq}" --flash_size "{build.flash_size}" -o "{build.path}/{build.project_name}.bin" "{build.path}/{build.project_name}.elf"
+recipe.objcopy.hex.pattern.linux=python "{tools.esptool.path}/{tools.esptool.cmd}" --chip esp32 elf2image --flash_mode "{build.flash_mode}" --flash_freq "{build.flash_freq}" --flash_size "{build.flash_size}" -o "{build.path}/{build.project_name}.bin" "{build.path}/{build.project_name}.elf"
 recipe.output.tmp_file={build.project_name}.bin
 recipe.output.save_file={build.project_name}.{build.variant}.bin
 recipe.size.pattern="{compiler.path}{compiler.size.cmd}" -A "{build.path}/{build.project_name}.elf"
@@ -110,7 +112,8 @@ recipe.size.regex.data=^(?:\.dram0\.data|\.dram0\.bss)\s+([0-9]+).*
 tools.esptool.upload.protocol=esp32
 tools.esptool.upload.params.verbose=
 tools.esptool.upload.params.quiet=
-tools.esptool.upload.pattern={cmd} --chip esp32 --port "{serial.port}" --baud {upload.speed}  --before default_reset --after hard_reset write_flash -z --flash_mode {build.flash_mode} --flash_freq {build.flash_freq} --flash_size detect 0xe000 "{runtime.platform.path}/tools/partitions/boot_app0.bin" 0x1000 "{runtime.platform.path}/tools/sdk/bin/{build.boot}.bin" 0x10000 "{build.path}/{build.project_name}.bin" 0x8000 "{build.path}/{build.project_name}.partitions.bin"
+tools.esptool.upload.pattern="{path}/{cmd}" --chip esp32 --port "{serial.port}" --baud {upload.speed}  --before default_reset --after hard_reset write_flash -z --flash_mode {build.flash_mode} --flash_freq {build.flash_freq} --flash_size detect 0xe000 "{runtime.platform.path}/tools/partitions/boot_app0.bin" 0x1000 "{runtime.platform.path}/tools/sdk/bin/bootloader_{build.boot}_{build.flash_freq}.bin" 0x10000 "{build.path}/{build.project_name}.bin" 0x8000 "{build.path}/{build.project_name}.partitions.bin"
+tools.esptool.upload.pattern.linux=python "{path}/{cmd}" --chip esp32 --port "{serial.port}" --baud {upload.speed}  --before default_reset --after hard_reset write_flash -z --flash_mode {build.flash_mode} --flash_freq {build.flash_freq} --flash_size detect 0xe000 "{runtime.platform.path}/tools/partitions/boot_app0.bin" 0x1000 "{runtime.platform.path}/tools/sdk/bin/bootloader_{build.boot}_{build.flash_freq}.bin" 0x10000 "{build.path}/{build.project_name}.bin" 0x8000 "{build.path}/{build.project_name}.partitions.bin"
 tools.esptool.upload.network_pattern={network_cmd} -i "{serial.port}" -p "{network.port}" "--auth={network.password}" -f "{build.path}/{build.project_name}.bin"
 vm.platform.root.path=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\Extensions\0ezs3is5.xyn\Micro Platforms\arduino16x
 runtime.tools.arduinoOTA.path=D:\Arduino\hardware\tools\avr
@@ -186,42 +189,42 @@ vm.platformname.name=esp32
 build.arch=ESP32
 upload.speed=921600
 build.flash_freq=80m
+build.project_name=linearActuatorControl.ino
+build.project_path=D:\UTD\Research\TI-Radar\Algorithms\linearActuator\linearActuatorControl\linearActuatorControl
+sketch_path=D:\UTD\Research\TI-Radar\Algorithms\linearActuator\linearActuatorControl\linearActuatorControl
+ProjectDir=D:\UTD\Research\TI-Radar\Algorithms\linearActuator\linearActuatorControl\linearActuatorControl\
+build.path=C:\Users\memin\AppData\Local\Temp\VMBuilds\linearActuatorControl\espressif_esp32thing\Debug
 builder.noino=false
 build.architecture=xtensa-esp32-elf
 vmresolved.compiler.path=D:\Arduino\hardware\espressif\esp32\tools\xtensa-esp32-elf\bin\
 vmresolved.tools.path=D:\Arduino\hardware\espressif\esp32\tools\xtensa-esp32-elf
 build.variant.vmresolved.name=esp32thing
 build.variant.vmresolved.full_path=D:\Arduino\hardware\espressif\esp32\variants\esp32thing
-build.project_name=linearActuatorControl.ino
-build.project_path=D:\UTD\Research\TI-Radar\Algorithms\linearActuator\linearActuatorControl\linearActuatorControl
-sketch_path=D:\UTD\Research\TI-Radar\Algorithms\linearActuator\linearActuatorControl\linearActuatorControl
-ProjectDir=D:\UTD\Research\TI-Radar\Algorithms\linearActuator\linearActuatorControl\linearActuatorControl\
-build.path=C:\Users\memin\AppData\Local\Temp\VMBuilds\linearActuatorControl\espressif_esp32thing\Debug
 vm.runtime.compiler.showwarnings=false
 vm.runtime.compiler.showwarnings_core=false
 vm.runtime.compiler.showwarnings_library=false
 vm.runtime.upload.verbose=false
 vm.runtime.upload.verify=false
-serial.port.file=COM5
-serial.port=COM5
-serial.port.num=5
-extra.time.local=1526417865
-extra.time.utc=1526435865
+serial.port.file=COM6
+serial.port=COM6
+serial.port.num=6
+extra.time.local=1527881489
+extra.time.utc=1527899489
 extra.time.dst=-18000
 extra.time.zone=18000
-serial.port.caption=COM5   - USB Serial Port
-serial.Caption=USB Serial Port (COM5)
+serial.port.caption=COM6   - USB Serial Port
+serial.Caption=USB Serial Port (COM6)
 serial.ClassGuid={4d36e978-e325-11ce-bfc1-08002be10318}
 serial.ConfigManagerErrorCode=0
 serial.ConfigManagerUserConfig=False
 serial.CreationClassName=Win32_PnPEntity
 serial.Description=USB Serial Port
-serial.DeviceID=FTDIBUS\VID_0403+PID_6015+DN02N53HA\0000
+serial.DeviceID=FTDIBUS\VID_0403+PID_6015+DN02MXQEA\0000
 serial.HardwareID.value0=FTDIBUS\COMPORT&VID_0403&PID_6015
 serial.Manufacturer=FTDI
-serial.Name=USB Serial Port (COM5)
+serial.Name=USB Serial Port (COM6)
 serial.PNPClass=Ports
-serial.PNPDeviceID=FTDIBUS\VID_0403+PID_6015+DN02N53HA\0000
+serial.PNPDeviceID=FTDIBUS\VID_0403+PID_6015+DN02MXQEA\0000
 serial.Present=True
 serial.Service=FTSER2K
 serial.Status=OK
@@ -260,7 +263,7 @@ vm.last.preproc.file.1.lineend=323
 vm.last.preproc.file.1.prefix_lines=0
 vm.last.preproc.file.2.file=Local_Stepper.cpp
 vm.last.preproc.file.2.offset=0
-vm.last.preproc.file.2.length=2140
+vm.last.preproc.file.2.length=2256
 vm.last.preproc.file.2.linecount=87
 vm.last.preproc.file.2.linestart=323
 vm.last.preproc.file.2.lineend=410
@@ -283,7 +286,7 @@ tools.ctags.cmd.path={path}/ctags
 tools.ctags.pattern="{cmd.path}" -u --language-force=c++ -f - --c++-kinds=svpf --fields=KSTtzns --line-directives "{source_file}"
 tools.avrdude.path={runtime.tools.avrdude.path}
 preproc.macros.flags=-w -x c++ -E -CC
-recipe.preproc.macros="{compiler.path}{compiler.cpp.cmd}" {compiler.cpreprocessor.flags} {compiler.cpp.flags} {preproc.macros.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} {compiler.cpp.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{preprocessed_file_path}"
+recipe.preproc.macros="{compiler.path}{compiler.cpp.cmd}" {compiler.cpreprocessor.flags} {compiler.cpp.flags} {preproc.macros.flags} -DF_CPU={build.f_cpu} -DARDUINO={runtime.ide.version} -DARDUINO_{build.board} -DARDUINO_ARCH_{build.arch} -DARDUINO_BOARD="{build.board}" -DARDUINO_VARIANT="{build.variant}" {compiler.cpp.extra_flags} {build.extra_flags} {includes} "{source_file}" -o "{preprocessed_file_path}"
 vm_all_includes= -I"D:\Arduino\hardware\espressif\esp32\cores\esp32"  -I"D:\Arduino\hardware\espressif\esp32\variants\esp32thing"  -I"D:\Arduino\libraries\Stepper\src"  -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\Extensions\0ezs3is5.xyn\Micro Platforms\default\debuggers\VM_DBG"  -I"D:\Arduino\libraries"  -I"C:\Users\memin\OneDrive\Documents\Arduino\libraries"  -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\Extensions\0ezs3is5.xyn\Micro Platforms\default\debuggers"  -I"D:\Arduino\hardware\espressif\esp32\libraries" 
 vm_all_and_proj_includes= -I"D:\Arduino\hardware\espressif\esp32\cores\esp32"  -I"D:\Arduino\hardware\espressif\esp32\variants\esp32thing"  -I"D:\Arduino\libraries\Stepper\src"  -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\Extensions\0ezs3is5.xyn\Micro Platforms\default\debuggers\VM_DBG"  -I"D:\Arduino\libraries"  -I"C:\Users\memin\OneDrive\Documents\Arduino\libraries"  -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\Extensions\0ezs3is5.xyn\Micro Platforms\default\debuggers"  -I"D:\Arduino\hardware\espressif\esp32\libraries" 
 vm_core_includes= -I"D:\Arduino\hardware\espressif\esp32\cores\esp32"  -I"D:\Arduino\hardware\espressif\esp32\variants\esp32thing" 
