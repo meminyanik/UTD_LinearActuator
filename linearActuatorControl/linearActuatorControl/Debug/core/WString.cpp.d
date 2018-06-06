@@ -21,4 +21,14 @@ C:\Users\memin\AppData\Local\Temp\VMBuilds\linearActuatorControl\espressif_esp32
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/newlib/sys/string.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/newlib/ctype.h \
  D:\Arduino\hardware\espressif\esp32\cores\esp32/pgmspace.h \
- D:\Arduino\hardware\espressif\esp32\cores\esp32\stdlib_noniso.h
+ D:\Arduino\hardware\espressif\esp32\cores\esp32\stdlib_noniso.h \
+ D:\Arduino\hardware\espressif\esp32\cores\esp32\esp32-hal-log.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/config/sdkconfig.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/log/esp_log.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/newlib/stdint.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/newlib/sys/_intsup.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/rom/ets_sys.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/soc/soc/soc.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_assert.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/newlib/assert.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/log/esp_log_internal.h

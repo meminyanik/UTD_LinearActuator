@@ -30,6 +30,12 @@ C:\Users\memin\AppData\Local\Temp\VMBuilds\linearActuatorControl\espressif_esp32
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/newlib/math.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/config/sdkconfig.h \
  D:\Arduino\hardware\espressif\esp32\cores\esp32\esp32-hal-log.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/log/esp_log.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/rom/ets_sys.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/soc/soc/soc.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_assert.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/newlib/assert.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/log/esp_log_internal.h \
  D:\Arduino\hardware\espressif\esp32\cores\esp32\esp32-hal-matrix.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/soc/soc/gpio_sig_map.h \
  D:\Arduino\hardware\espressif\esp32\cores\esp32\esp32-hal-uart.h \
@@ -54,10 +60,6 @@ C:\Users\memin\AppData\Local\Temp\VMBuilds\linearActuatorControl\espressif_esp32
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/freertos/freertos/xtensa_context.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/xtensa/corebits.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/xtensa/xtruntime-frames.h \
- D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/rom/ets_sys.h \
- D:\Arduino\hardware\espressif\esp32/tools/sdk/include/soc/soc/soc.h \
- D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_assert.h \
- D:\Arduino\hardware\espressif\esp32/tools/sdk/include/newlib/assert.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/freertos/freertos/projdefs.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/freertos/freertos/portable.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/freertos/freertos/deprecated_definitions.h \
@@ -67,11 +69,15 @@ C:\Users\memin\AppData\Local\Temp\VMBuilds\linearActuatorControl\espressif_esp32
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/xtensa/config/specreg.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/xtensa/xtruntime-core-state.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_crosscore_int.h \
- D:\Arduino\hardware\espressif\esp32/tools/sdk/include/freertos/freertos/portbenchmark.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_timer.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_err.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/heap/esp_heap_caps.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/heap/multi_heap.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/soc/soc/soc_memory_layout.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_attr.h \
+ D:\Arduino\hardware\espressif\esp32/tools/sdk/include/freertos/freertos/portbenchmark.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/freertos/freertos/mpu_wrappers.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_system.h \
- D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_err.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_sleep.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/driver/driver/gpio.h \
  D:\Arduino\hardware\espressif\esp32/tools/sdk/include/esp32/esp_types.h \
